@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Timeline Scroll on Hover</title>
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="timeline.css">
+</head>
+<body>
+  <!-- Timeline container -->
+  <div class="timeline-container">
+    <!-- Left arrow area -->
+    <div class="arrow-area arrow-left" id="leftArrow">&#8592;</div>
+    <!-- Row for timeline squares -->
+    <div class="timeline-row" id="timelineRow">
+      <!-- Squares will be added here by JavaScript -->
+    </div>
+    <!-- Right arrow area -->
+    <div class="arrow-area arrow-right" id="rightArrow">&#8594;</div>
+  </div>
+
+  <script>
+    // Example timeline data (you can add more entries)
+    const timelineData = [
+      { title: "Event 1", subtitle: "First event", img: "https://via.placeholder.com/80?text=1" },
+      { title: "Event 2", subtitle: "Second event", img: "https://via.placeholder.com/80?text=2" },
+      { title: "Event 3", subtitle: "Third event", img: "https://via.placeholder.com/80?text=3" },
+      { title: "Event 4", subtitle: "Fourth event", img: "https://via.placeholder.com/80?text=4" },
+      { title: "Event 5", subtitle: "Fifth event", img: "https://via.placeholder.com/80?text=5" },
+      { title: "Event 6", subtitle: "Sixth event", img: "https://via.placeholder.com/80?text=6" },
+      { title: "Event 7", subtitle: "Seventh event", img: "https://via.placeholder.com/80?text=7" },
+      { title: "Event 8", subtitle: "Eighth event", img: "https://via.placeholder.com/80?text=8" }
+    ];
+
+    // Get the timeline row container
+    const row = document.getElementById('timelineRow');
+
+    // Add all squares to the row
+    for (let i = 0; i < timelineData.length; i++) {
+      // Create a div for the square
+      const square = document.createElement('div');
+      square.className = 'timeline-square';
+      // Add image
+      const img = document.createElement('img');
+      img.src = timelineData[i].img;
+      img.alt = timelineData[i].title;
+      square.appendChild(img);
+      // Add title
+      const title = document.createElement('div');
+      title.className = 'timeline-title';
+      title.textContent = timelineData[i].title;
+      square.appendChild(title);
+      // Add subtitle
+      const subtitle = document.createElement('div');
+      subtitle.className = 'timeline-subtitle';
+      subtitle.textContent = timelineData[i].subtitle;
+      square.appendChild(subtitle);
+      // Add square to the row
+      row.appendChild(square);
+    }
+
+    // Variable to store the interval ID
+    let scrollInterval = null;
+
+    // Function to start scrolling left
+    function startScrollLeft() {
+      stopScroll(); // Stop any previous scroll
+      scrollInterval = setInterval(function() {
+        row.scrollLeft -= 5; // Move left a little bit
+      }, 20); // Every 20 milliseconds
+    }
+
+    // Function to start scrolling right
+    function startScrollRight() {
+      stopScroll(); // Stop any previous scroll
+      scrollInterval = setInterval(function() {
+        row.scrollLeft += 5; // Move right a little bit
+      }, 20); // Every 20 milliseconds
+    }
+
+    // Function to stop scrolling
+    function stopScroll() {
+      if (scrollInterval) {
+        clearInterval(scrollInterval);
+        scrollInterval = null;
+      }
+    }
+
+    // When mouse is over left arrow, start scrolling left
+    document.getElementById('leftArrow').addEventListener('mouseenter', startScrollLeft);
+    // When mouse leaves left arrow, stop scrolling
+    document.getElementById('leftArrow').addEventListener('mouseleave', stopScroll);
+
+    // When mouse is over right arrow, start scrolling right
+    document.getElementById('rightArrow').addEventListener('mouseenter', startScrollRight);
+    // When mouse leaves right arrow, stop scrolling
+    document.getElementById('rightArrow').addEventListener('mouseleave', stopScroll);
+  </script>
+</body>
+</html>

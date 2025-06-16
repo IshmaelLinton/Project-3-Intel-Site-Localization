@@ -1,1 +1,86 @@
-/* Add your CSS here */
+/* Style for the timeline container */
+.timeline-container {
+  width: 90%;
+  margin: 30px auto;
+  text-align: center;
+  position: relative; /* Needed for arrow positioning */
+}
+
+/* Row for the squares */
+.timeline-row {
+  display: flex; /* Arrange squares in a row */
+  gap: 20px; /* Space between squares */
+  overflow: hidden; /* Hide squares that don't fit */
+  width: 660px; /* 4 squares * 150px + 3 gaps * 20px */
+  margin: 0 auto 20px auto; /* Center the row */
+  background: #f9f9f9;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  position: relative;
+  height: 220px; /* Enough for squares and a little space */
+}
+
+/* Each timeline square */
+.timeline-square {
+  width: 150px;
+  height: 200px;
+  background: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  flex-shrink: 0; /* Prevent shrinking when scrolling */
+}
+
+/* Image inside the square */
+.timeline-square img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Title style */
+.timeline-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Subtitle style */
+.timeline-subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Arrow areas for hover */
+.arrow-area {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 32px;
+  color: #4CAF50;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  z-index: 2;
+  user-select: none;
+}
+.arrow-area:hover {
+  opacity: 1;
+  background: rgba(200,255,200,0.2);
+}
+.arrow-left {
+  left: 0;
+}
+.arrow-right {
+  right: 0;
+}
