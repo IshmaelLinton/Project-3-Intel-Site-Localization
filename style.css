@@ -186,8 +186,6 @@ header {
   justify-content: center;
   cursor: pointer;
   font-size: 6vw; /* Make arrow size responsive to screen width */
-  min-font-size: 32px;
-  max-font-size: 80px;
   color: #2196F3;
   opacity: 0.5;
   transition: opacity 0.2s;
