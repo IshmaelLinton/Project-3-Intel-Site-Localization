@@ -383,3 +383,9 @@ main {
     max-width: 400px;
   }
 }
+
+/* Make all Bootstrap buttons square (no curved edges) */
+.btn,
+.btn-primary {
+  border-radius: 0 !important; /* Remove rounded corners */
+}
